@@ -30,7 +30,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
         ffmpeg \
         libosmesa6 libgl1 libegl1 libgl1-mesa-dri libglu1-mesa \
         build-essential python3-dev python3-venv \
-        jq ripgrep unzip zip file openssh-client ca-certificates \
+        jq ripgrep unzip zip file openssh-client ca-certificates gh \
     && rm -rf /var/lib/apt/lists/*
 
 # --- Rootless podman -------------------------------------------------------
@@ -51,6 +51,7 @@ RUN set -eu; \
 #   /etc/containers/storage.conf -> driver = "vfs"   (slow, disk-hungry)
 #   BUILDAH_ISOLATION=chroot for builds in a locked-down container.
 #
-# Deliberately NOT here: gh CLI (GitHub via PAT in ~/.git-credentials does the
-# job), nix (a flake is a future option, not today's problem). Features must
-# earn their complexity.
+# Deliberately NOT here: nix (a flake is a future option, not today's problem).
+# gh IS here (2.46.0, distro archive) — the github-* skills are written around
+# it; auth comes from the PAT (GH_TOKEN or the credential store). Features must
+# earn their complexity; this one did.

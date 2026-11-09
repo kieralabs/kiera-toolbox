@@ -23,11 +23,11 @@ depends on it).
 - **ffmpeg** — video receipts (was missing from the base image).
 - **mesa / osmesa** — headless MuJoCo rendering. `MUJOCO_GL=osmesa`, no
   `LD_LIBRARY_PATH` hack.
-- **build-essential, python3-dev/venv, jq, ripgrep, unzip/zip, file, ssh** —
-  the boring toolbox.
+- **build-essential, python3-dev/venv, jq, ripgrep, unzip/zip, file, ssh, gh** —
+  the boring toolbox (`gh` powers the github-* skills; auth via the existing
+  PAT).
 
-Deliberately absent: `gh` (PAT + `~/.git-credentials` covers GitHub), nix
-(future option).
+Deliberately absent: nix (future option).
 
 ## Verify after deploy (first session inside the new container)
 
